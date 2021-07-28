@@ -31,6 +31,7 @@ h1 {
 	margin-left: 45%;
 	font-size: 20px;
 	margin-top: 10px;
+	cursor: pointer;
 }
 #data {
 	margin-left: 10%;
@@ -45,4 +46,16 @@ h1 {
 	font-size: 25px;
 	margin: 20px;
 	color: white;
+}
+#err {
+	position: relative;
+	display: none;
+	font-size: 30px;
+}
+#errimg {
+	width: 880px;
+	margin-top: 220px;
+	margin-left: 240px;
+	height: 355px;
+	position: absolute;
 }

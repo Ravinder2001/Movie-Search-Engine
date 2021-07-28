@@ -7,10 +7,17 @@
 		<title>Movies</title>
 	</head>
 	<body>
+		<div id="err">
+			<img
+				src="https://i.ytimg.com/vi/MuKDvXdkNL0/maxresdefault.jpg"
+				id="errimg"
+			/>
+		</div>
 		<div id="mainBox">
 			<h1>Movies</h1>
 			<input type="text" id="movie" placeholder="Search Movie Here....." />
 			<div><button onclick="searchMovie()" id="btn">Submit</button></div>
+
 			<div id="data">
 				<img id="img" />
 				<div id="div1"></div>
@@ -38,7 +45,26 @@
 				`https://www.omdbapi.com/?t=${movie}&apikey=df6b5cc6`
 			);
 			let data = await res.json();
+
 			document.getElementById('img').src = data.Poster;
+			if (data.Response == 'False') {
+				let error = document.getElementById('err');
+				error.style.display = 'block';
+				let main = document.getElementById('mainBox');
+				//main.style.display = 'none';
+				let x = document.getElementById('x');
+				x.addEventListener('click', function () {
+					main.style.display = 'block';
+					error.style.display = 'none';
+					document.getElementById('img').src = null;
+					div1.innerHTML = null;
+					div2.innerHTML = null;
+					div3.innerHTML = null;
+					div4.innerHTML = null;
+					div5.innerHTML = null;
+					movie.innerHTML = 'null';
+				});
+			}
 			console.log(data);
 
 			div1.innerHTML = data.Actors;
