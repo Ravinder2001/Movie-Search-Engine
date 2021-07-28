@@ -1,0 +1,53 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="style.css" />
+		<title>Movies</title>
+	</head>
+	<body>
+		<div id="mainBox">
+			<h1>Movies</h1>
+			<input type="text" id="movie" placeholder="Search Movie Here....." />
+			<div><button onclick="searchMovie()" id="btn">Submit</button></div>
+			<div id="data">
+				<img id="img" />
+				<div id="div1"></div>
+				<div id="div2"></div>
+				<div id="div3"></div>
+				<div id="div4"></div>
+				<div id="div5"></div>
+			</div>
+		</div>
+	</body>
+</html>
+<script>
+	async function searchMovie() {
+		let movie = document.getElementById('movie').value;
+
+		let img = document.createElement('img');
+		let div1 = document.getElementById('div1');
+		let div2 = document.getElementById('div2');
+		let div3 = document.getElementById('div3');
+		let div4 = document.getElementById('div4');
+		let div5 = document.getElementById('div5');
+
+		try {
+			let res = await fetch(
+				`https://www.omdbapi.com/?t=${movie}&apikey=df6b5cc6`
+			);
+			let data = await res.json();
+			document.getElementById('img').src = data.Poster;
+			console.log(data);
+
+			div1.innerHTML = data.Actors;
+			div2.innerHTML = data.Ratings[0].Value;
+			div3.innerHTML = data.Released;
+			div4.innerHTML = data.Language;
+			div5.innerHTML = data.BoxOffice;
+		} catch (err) {
+			console.log(err);
+		}
+	}
+</script>
