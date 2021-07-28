@@ -50,20 +50,10 @@
 			if (data.Response == 'False') {
 				let error = document.getElementById('err');
 				error.style.display = 'block';
-				let main = document.getElementById('mainBox');
-				//main.style.display = 'none';
-				let x = document.getElementById('x');
-				x.addEventListener('click', function () {
-					main.style.display = 'block';
-					error.style.display = 'none';
-					document.getElementById('img').src = null;
-					div1.innerHTML = null;
-					div2.innerHTML = null;
-					div3.innerHTML = null;
-					div4.innerHTML = null;
-					div5.innerHTML = null;
-					movie.innerHTML = 'null';
-				});
+			}
+			if (data.Response == 'True') {
+				let error = document.getElementById('err');
+				error.style.display = 'none';
 			}
 			console.log(data);
 
