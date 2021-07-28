@@ -26,6 +26,7 @@
 				<div id="div4"></div>
 				<div id="div5"></div>
 			</div>
+			<div id="rec">Recommended</div>
 		</div>
 	</body>
 </html>
@@ -54,6 +55,12 @@
 			if (data.Response == 'True') {
 				let error = document.getElementById('err');
 				error.style.display = 'none';
+			}
+			if (data.Ratings[0].Value[0] > 8.5) {
+				document.getElementById('rec').style.display = 'block';
+			}
+			if (data.Ratings[0].Value[0] < 8.5) {
+				document.getElementById('rec').style.display = 'none';
 			}
 			console.log(data);
 

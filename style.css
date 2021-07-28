@@ -59,3 +59,9 @@ h1 {
 	height: 355px;
 	position: absolute;
 }
+#rec {
+	display: none;
+	float: left;
+	font-size: 30px;
+	color: yellow;
+}
